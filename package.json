@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-feature-sliced-design",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Plugin for feature-sliced designed projects",
   "keywords": [
     "eslint",
