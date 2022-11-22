@@ -1,5 +1,5 @@
 /**
- * @fileoverview Check import paths conforming to feature-sliced design
+ * @fileoverview Check whether import path within a slice is relative
  * @author Eugene Skrobov
  */
 "use strict";
@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/path-checker"),
+const rule = require("../../../lib/rules/relative-path-within-slice"),
   RuleTester = require("eslint").RuleTester;
 
 
@@ -17,15 +17,17 @@ const rule = require("../../../lib/rules/path-checker"),
 //------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester();
-ruleTester.run("path-checker", rule, {
+ruleTester.run("relative-path-within-slice", rule, {
   valid: [
-    // give me some code that won't trigger a warning
+    {
+      code: '',
+    }
   ],
 
   invalid: [
-    {
-      code: "",
-      errors: [{ message: "Fill me in.", type: "Me too" }],
-    },
+    // {
+    //   code: "",
+    //   errors: [{ message: "Fill me in.", type: "Me too" }],
+    // },
   ],
 });

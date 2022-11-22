@@ -1,4 +1,4 @@
-# Check import paths conforming to feature-sliced design (path-checker)
+# Check whether import path within a slice is relative (relative-path-within-slice)
 
 Please describe the origin of the rule here.
 

@@ -41,6 +41,6 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* Fill in provided rules here
+* `relative-path-within-slice`: Check whether import path within a slice is relative.
 
 

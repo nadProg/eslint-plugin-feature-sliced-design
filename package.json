@@ -5,13 +5,16 @@
   "keywords": [
     "eslint",
     "eslintplugin",
-    "eslint-plugin"
+    "eslint-plugin",
+    "fsd",
+    "feature-sliced design"
   ],
   "author": "Eugene Skrobov",
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "scripts": {
     "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
     "test": "mocha tests --recursive"
   },
   "dependencies": {
