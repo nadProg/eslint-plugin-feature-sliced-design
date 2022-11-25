@@ -10,6 +10,10 @@
     "feature-sliced design"
   ],
   "author": "Eugene Skrobov",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nadProg/eslint-plugin-feature-sliced-design.git"
+  },
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "scripts": {
