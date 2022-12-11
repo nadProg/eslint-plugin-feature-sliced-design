@@ -16,18 +16,40 @@ const rule = require("../../../lib/rules/relative-path-within-slice"),
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester();
-ruleTester.run("relative-path-within-slice", rule, {
+const ruleTester = new RuleTester({
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module'
+  }
+});
+ruleTester.run('relative-path-within-slice', rule, {
   valid: [
     {
-      code: '',
+      filename: 'C:\\study\\fsd\\src\\features\\articleRating\\index.ts',
+      code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
     }
   ],
 
   invalid: [
-    // {
-    //   code: "",
-    //   errors: [{ message: "Fill me in.", type: "Me too" }],
-    // },
+    {
+      filename: 'C:\\study\\fsd\\src\\features\\articleRating\\index.ts',
+      code: 'import { ArticleRating } from \'features/articleRating/ui/ArticleRating/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\features\\articleRating\\index.ts',
+      code: 'export { ArticleRating } from \'features/articleRating/ui/ArticleRating/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\features\\articleRating\\index.ts',
+      code: 'export { ArticleRating } from \'@/features/articleRating/ui/ArticleRating/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [
+        {
+          alias: '@',
+        }
+      ]
+    }
   ],
 });
