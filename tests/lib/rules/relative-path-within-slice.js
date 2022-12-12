@@ -138,27 +138,5 @@ ruleTester.run('relative-path-within-slice', rule, {
       errors: [{ messageId: 'shouldBeRelative' }],
       options: [{ alias: '@' }],
     },
-    {
-      filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
-      code: 'import { ArticleRating } from \'shared/ui/ArticleRating\';',
-      errors: [{ messageId: 'shouldBeRelative' }],
-    },
-    {
-      filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
-      code: 'import { ArticleRating } from \'shared/ui/ArticleRating\';',
-      errors: [{ messageId: 'shouldBeRelative' }],
-    },
-    {
-      filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
-      code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
-      errors: [{ messageId: 'shouldBeRelative' }],
-      options: [{ alias: '@' }],
-    },
-    {
-      filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
-      code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
-      errors: [{ messageId: 'shouldBeRelative' }],
-      options: [{ alias: '@' }],
-    },
   ],
 });
