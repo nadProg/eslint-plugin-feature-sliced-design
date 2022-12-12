@@ -58,7 +58,7 @@ ruleTester.run('relative-path-within-slice', rule, {
       filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
       options: [{ alias: '@' }],
-    },
+    }
   ],
 
   invalid: [

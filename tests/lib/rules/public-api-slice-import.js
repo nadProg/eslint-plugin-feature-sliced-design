@@ -51,6 +51,16 @@ ruleTester.run("public-api-slice-import", rule, {
       filename: 'C:\\study\\fsd\\src\\features\\Feature\\index.ts',
       code: "import { ArticleRating } from '@/features/Feature/ui/View';",
       options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.tsx',
+      code: "import { ArticleRating } from 'features/Feature/ui';",
+      options: [{ ignoreLayers: ['features'] }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.tsx',
+      code: "import { ArticleRating } from '@/features/Feature/ui';",
+      options: [{ alias: '@', ignoreLayers: ['features'] }],
     }
   ],
 
