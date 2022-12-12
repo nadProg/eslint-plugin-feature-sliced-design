@@ -40,7 +40,25 @@ ruleTester.run('relative-path-within-slice', rule, {
     {
       filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
-    }
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
+      code: 'import { ArticleRating } from \'shared/ui/AnotherShared\';',
+    },
+    {
+      filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'shared/ui/AnotherShared\';',
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
+      options: [{ alias: '@' }],
+    },
   ],
 
   invalid: [
@@ -117,6 +135,28 @@ ruleTester.run('relative-path-within-slice', rule, {
     {
       filename: 'C:\\study\\fsd\\src\\app\\ui\\ArticleRating\\index.ts',
       code: 'import { ArticleRating } from \'@/app/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
+      code: 'import { ArticleRating } from \'shared/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
+      filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'shared/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
       options: [{ alias: '@' }],
     },
