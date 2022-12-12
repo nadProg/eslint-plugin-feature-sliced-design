@@ -22,6 +22,7 @@ const ruleTester = new RuleTester({
     sourceType: 'module'
   }
 });
+
 ruleTester.run('relative-path-within-slice', rule, {
   valid: [
     {
@@ -67,21 +68,13 @@ ruleTester.run('relative-path-within-slice', rule, {
       filename: 'C:\\study\\fsd\\src\\features\\articleRating\\index.ts',
       code: 'export { ArticleRating } from \'@/features/articleRating/ui/ArticleRating/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
-      options: [
-        {
-          alias: '@',
-        }
-      ]
+      options: [{ alias: '@' }],
     },
     {
       filename: 'C:/study/fsd/src/features/articleRating/index.ts',
       code: 'export { ArticleRating } from \'@/features/articleRating/ui/ArticleRating/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
-      options: [
-        {
-          alias: '@',
-        }
-      ]
+      options: [{ alias: '@' }],
     },
     {
       filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
@@ -107,41 +100,25 @@ ruleTester.run('relative-path-within-slice', rule, {
       filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
       code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
-      options: [
-        {
-          alias: '@',
-        }
-      ]
+      options: [{ alias: '@' }],
     },
     {
       filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
-      options: [
-        {
-          alias: '@',
-        }
-      ]
+      options: [{ alias: '@' }],
     },
     {
       filename: 'C:/study/fsd/src/app/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'@/app/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
-      options: [
-        {
-          alias: '@',
-        }
-      ]
+      options: [{ alias: '@' }],
     },
     {
       filename: 'C:\\study\\fsd\\src\\app\\ui\\ArticleRating\\index.ts',
       code: 'import { ArticleRating } from \'@/app/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
-      options: [
-        {
-          alias: '@',
-        }
-      ]
+      options: [{ alias: '@' }],
     },
   ],
 });
