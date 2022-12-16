@@ -53,6 +53,41 @@ ruleTester.run('layers-hierarchy', rule, {
       filename: 'C:\\study\\fsd\\src\\app\\App\\file.tsx',
       code: "import { Page } from 'pages/Page';",
     },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\Component\\file.tsx',
+      code: "import { AnotherShared } from '@/shared/ui/AnotherShared';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\entities\\Entity\\file.tsx',
+      code: "import { Shared } from '@/shared/ui/Shared';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\entities\\Entity\\file.tsx',
+      code: "import { AnotherEntity } from '@/entities/AnotherEntity';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\features\\Feature\\file.tsx',
+      code: "import { Entity } from '@/entities/Entity';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Feature } from '@/features/Feature';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\pages\\Page\\file.tsx',
+      code: "import { Widget } from '@/widgets/Widget';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\app\\App\\file.tsx',
+      code: "import { Page } from '@/pages/Page';",
+      options: [{ alias: '@' }],
+    },
   ],
 
   invalid: [
@@ -79,6 +114,36 @@ ruleTester.run('layers-hierarchy', rule, {
     {
       filename: 'C:\\study\\fsd\\src\\pages\\Page\\file.tsx',
       code: "import { App } from 'app/App';",
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\Component\\file.tsx',
+      code: "import { Entity } from '@/entities/Entity';",
+      options: [{ alias: '@' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\entities\\Entity\\file.tsx',
+      code: "import { Feature } from '@/features/Feature';",
+      options: [{ alias: '@' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\features\\Feature\\file.tsx',
+      code: "import { Widget } from '@/widgets/Widget';",
+      options: [{ alias: '@' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Page } from '@/pages/Page';",
+      options: [{ alias: '@' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\pages\\Page\\file.tsx',
+      code: "import { App } from '@/app/App';",
+      options: [{ alias: '@' }],
       errors: [{ messageId: 'underLayerImportForbidden' }],
     },
   ],
