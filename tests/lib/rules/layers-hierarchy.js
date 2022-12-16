@@ -39,10 +39,30 @@ ruleTester.run('layers-hierarchy', rule, {
     },
     {
       filename: 'C:\\study\\fsd\\src\\features\\Feature\\file.tsx',
+      code: "import { Shared } from 'shared/ui/Shared';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\features\\Feature\\file.tsx',
       code: "import { Entity } from 'entities/Entity';",
     },
     {
       filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Shared } from 'shared/ui/Shared';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Entity } from 'entities/Entity';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Feature } from 'features/Feature';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\pages\\Page\\file.tsx',
+      code: "import { Entity } from 'entities/Entity';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\pages\\Page\\file.tsx',
       code: "import { Feature } from 'features/Feature';",
     },
     {
@@ -87,6 +107,21 @@ ruleTester.run('layers-hierarchy', rule, {
       filename: 'C:\\study\\fsd\\src\\app\\App\\file.tsx',
       code: "import { Page } from '@/pages/Page';",
       options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\Component\\file.tsx',
+      code: "import { Entity } from 'entities/Entity';",
+      options: [{ ignoredImports: ['**/entities/Entity'] }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Page } from 'pages/Page';",
+      options: [{ ignoredImports: ['**/Page'] }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\Component\\file.tsx',
+      code: "import { Entity } from '@/entities/Entity';",
+      options: [{ alias: '@', ignoredImports: ['**/entities/Entity'] }],
     },
   ],
 
