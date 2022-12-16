@@ -1,18 +1,26 @@
-"use strict";
+'use strict';
 
 module.exports = {
   root: true,
   extends: [
-    "eslint:recommended",
-    "plugin:eslint-plugin/recommended",
-    "plugin:node/recommended",
+    'eslint:recommended',
+    'airbnb-base',
+    'plugin:eslint-plugin/recommended',
+    'plugin:node/recommended',
   ],
   env: {
     node: true,
   },
+  rules: {
+    strict: 'off',
+    'max-len': ['error', {
+      code: 120,
+      ignoreComments: true,
+    }],
+  },
   overrides: [
     {
-      files: ["tests/**/*.js"],
+      files: ['tests/**/*.js'],
       env: { mocha: true },
     },
   ],

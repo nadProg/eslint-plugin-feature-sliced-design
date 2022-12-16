@@ -2,15 +2,15 @@
  * @fileoverview Check whether import path within a slice is relative
  * @author Eugene Skrobov
  */
-"use strict";
+
+'use strict';
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/relative-path-within-slice"),
-  RuleTester = require("eslint").RuleTester;
-
+const { RuleTester } = require('eslint');
+const rule = require('../../../lib/rules/relative-path-within-slice');
 
 //------------------------------------------------------------------------------
 // Tests
@@ -19,8 +19,8 @@ const rule = require("../../../lib/rules/relative-path-within-slice"),
 const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 
 ruleTester.run('relative-path-within-slice', rule, {
@@ -58,7 +58,7 @@ ruleTester.run('relative-path-within-slice', rule, {
       filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
       options: [{ alias: '@' }],
-    }
+    },
   ],
 
   invalid: [

@@ -2,15 +2,15 @@
  * @fileoverview Import from a slice should be performed via public API only. Import from slice internals is forbidden.
  * @author Eugene Skrobov
  */
-"use strict";
+
+'use strict';
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/public-api-slice-import"),
-  RuleTester = require("eslint").RuleTester;
-
+const { RuleTester } = require('eslint');
+const rule = require('../../../lib/rules/public-api-slice-import');
 
 //------------------------------------------------------------------------------
 // Tests
@@ -19,11 +19,11 @@ const rule = require("../../../lib/rules/public-api-slice-import"),
 const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 });
 
-ruleTester.run("public-api-slice-import", rule, {
+ruleTester.run('public-api-slice-import', rule, {
   valid: [
     {
       filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.tsx',
@@ -61,7 +61,7 @@ ruleTester.run("public-api-slice-import", rule, {
       filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.tsx',
       code: "import { ArticleRating } from '@/features/Feature/ui';",
       options: [{ alias: '@', ignoreLayers: ['features'] }],
-    }
+    },
   ],
 
   invalid: [
