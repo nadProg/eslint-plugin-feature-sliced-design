@@ -62,6 +62,11 @@ ruleTester.run('public-api-slice-import', rule, {
       code: "import { ArticleRating } from '@/features/Feature/ui';",
       options: [{ alias: '@', ignoreLayers: ['features'] }],
     },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.test.tsx',
+      code: "import { ArticleRating } from '@/features/Feature/testing';",
+      options: [{ alias: '@', testFiles: ['**/*.test.tsx'] }],
+    },
   ],
 
   invalid: [
@@ -86,6 +91,18 @@ ruleTester.run('public-api-slice-import', rule, {
       code: "import { ArticleRating } from '@/features/Feature/ui/View';",
       errors: [{ messageId: 'shouldBePublicApi' }],
       options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.test.tsx',
+      code: "import { ArticleRating } from '@/features/Feature';",
+      options: [{ alias: '@', testFiles: ['**/*.test.tsx'] }],
+      errors: [{ messageId: 'shouldBeTestingApi' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.test.tsx',
+      code: "import { ArticleRating } from '@/features/Feature/testing/internal';",
+      options: [{ alias: '@', testFiles: ['**/*.test.tsx'] }],
+      errors: [{ messageId: 'shouldBeTestingApi' }],
     },
   ],
 });
