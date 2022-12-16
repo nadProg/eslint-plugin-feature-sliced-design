@@ -123,6 +123,24 @@ ruleTester.run('layers-hierarchy', rule, {
       code: "import { Entity } from '@/entities/Entity';",
       options: [{ alias: '@', ignoredImports: ['**/entities/Entity'] }],
     },
+    {
+      filename: 'C:\\study\\fsd\\src\\index.tsx',
+      code: "import { App } from 'app/App';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\index.tsx',
+      code: "import { App } from '@/app/App';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\extra\\index.tsx',
+      code: "import { App } from 'app/App';",
+    },
+    {
+      filename: 'C:\\study\\fsd\\extra\\index.tsx',
+      code: "import { App } from '@/app/App';",
+      options: [{ alias: '@' }],
+    },
   ],
 
   invalid: [
