@@ -124,6 +124,21 @@ ruleTester.run('layers-hierarchy', rule, {
       options: [{ alias: '@', ignoredImports: ['**/entities/Entity'] }],
     },
     {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\component\\file.tsx',
+      code: "import { Entity } from 'entities/Entity';",
+      options: [{ ignoredFiles: ['**/component/*.tsx'] }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\file.tsx',
+      code: "import { Page } from 'pages/Page';",
+      options: [{ ignoredFiles: ['**/file.tsx'] }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\src\\shared\\ui\\component\\file.tsx',
+      code: "import { Entity } from '@/entities/Entity';",
+      options: [{ alias: '@', ignoredFiles: ['**/component/*.tsx'] }],
+    },
+    {
       filename: 'C:\\study\\fsd\\src\\index.tsx',
       code: "import { App } from 'app/App';",
     },
