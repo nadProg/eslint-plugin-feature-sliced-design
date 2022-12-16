@@ -41,6 +41,7 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* `relative-path-within-slice`: Check whether import path within a slice is relative.
+* [relative-path-within-slice](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/relative-path-within-slice.md): Check whether import path within a slice is relative.
+* [public-api-slice-import](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/public-api-slice-import.md): Check whether import is performed via public API.
 
 
