@@ -67,6 +67,26 @@ ruleTester.run('public-api-slice-import', rule, {
       code: "import { ArticleRating } from '@/features/Feature/testing';",
       options: [{ alias: '@', testFiles: ['**/*.test.tsx'] }],
     },
+    {
+      filename: '\\home\\runner\\work\\fsd\\fsd\\src\\features\\List\\ui\\List\\List.stories.tsx',
+      code: "import { Article } from 'entities/Article/testing';",
+      options: [{ testFiles: ['**/*.stories.tsx'] }],
+    },
+    {
+      filename: '\\home\\runner\\work\\fsd\\fsd\\src\\features\\List\\ui\\List\\List.stories.tsx',
+      code: "import { Article } from '@/entities/Article/testing';",
+      options: [{ alias: '@', testFiles: ['**/*.stories.tsx'] }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/src/features/List/ui/List/List.stories.tsx',
+      code: "import { Article } from 'entities/Article/testing';",
+      options: [{ testFiles: ['**/*.stories.tsx'] }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/src/features/List/ui/List/List.stories.tsx',
+      code: "import { Article } from '@/entities/Article/testing';",
+      options: [{ alias: '@', testFiles: ['**/*.stories.tsx'] }],
+    },
   ],
 
   invalid: [
