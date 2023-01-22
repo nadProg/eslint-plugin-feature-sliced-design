@@ -83,6 +83,11 @@ ruleTester.run('public-api-slice-import', rule, {
       options: [{ testFiles: ['**/*.stories.tsx'] }],
     },
     {
+      filename: '/home/runner/work/fsd/fsd/project/features/List/ui/List/List.stories.tsx',
+      code: "import { Article } from 'entities/Article/testing';",
+      options: [{ testFiles: ['**/*.stories.tsx'], projectDir: 'project' }],
+    },
+    {
       filename: '/home/runner/work/fsd/fsd/src/features/List/ui/List/List.stories.tsx',
       code: "import { Article } from '@/entities/Article/testing';",
       options: [{ alias: '@', testFiles: ['**/*.stories.tsx'] }],
@@ -93,6 +98,12 @@ ruleTester.run('public-api-slice-import', rule, {
     {
       filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.tsx',
       code: "import { ArticleRating } from 'features/Feature/ui';",
+      errors: [{ messageId: 'shouldBePublicApi' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\project\\widgets\\Widget\\ui\\View\\View.tsx',
+      code: "import { ArticleRating } from 'features/Feature/ui';",
+      options: [{ projectDir: 'project' }],
       errors: [{ messageId: 'shouldBePublicApi' }],
     },
     {
@@ -107,6 +118,12 @@ ruleTester.run('public-api-slice-import', rule, {
       options: [{ alias: '@' }],
     },
     {
+      filename: 'C:\\study\\fsd\\project\\widgets\\Widget\\ui\\View\\View.tsx',
+      code: "import { ArticleRating } from '@/features/Feature/ui';",
+      errors: [{ messageId: 'shouldBePublicApi' }],
+      options: [{ alias: '@', projectDir: 'project' }],
+    },
+    {
       filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.tsx',
       code: "import { ArticleRating } from '@/features/Feature/ui/View';",
       errors: [{ messageId: 'shouldBePublicApi' }],
@@ -116,6 +133,12 @@ ruleTester.run('public-api-slice-import', rule, {
       filename: 'C:\\study\\fsd\\src\\widgets\\Widget\\ui\\View\\View.test.tsx',
       code: "import { ArticleRating } from '@/features/Feature';",
       options: [{ alias: '@', testFiles: ['**/*.test.tsx'] }],
+      errors: [{ messageId: 'shouldBeTestingApi' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\project\\widgets\\Widget\\ui\\View\\View.test.tsx',
+      code: "import { ArticleRating } from '@/features/Feature';",
+      options: [{ alias: '@', testFiles: ['**/*.test.tsx'], projectDir: 'project' }],
       errors: [{ messageId: 'shouldBeTestingApi' }],
     },
     {

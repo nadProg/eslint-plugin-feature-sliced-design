@@ -30,16 +30,36 @@ ruleTester.run('relative-path-within-slice', rule, {
       code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
     },
     {
+      filename: 'C:\\study\\fsd\\project\\features\\articleRating\\index.ts',
+      code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
+      options: [{ projectDir: 'project' }],
+    },
+    {
       filename: 'C:/study/fsd/src/features/articleRating/index.ts',
       code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
     },
     {
+      filename: 'C:/study/fsd/project/features/articleRating/index.ts',
+      code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
+      options: [{ projectDir: 'project' }],
+    },
+    {
       filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
       code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
     },
     {
+      filename: 'C:\\study\\fsd\\project\\shared\\ui\\ArticleRating\\index.ts',
+      code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
+      options: [{ projectDir: 'project' }],
+    },
+    {
       filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
+    },
+    {
+      filename: 'C:/study/fsd/project/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'./ui/ArticleRating/ArticleRating\';',
+      options: [{ projectDir: 'project' }],
     },
     {
       filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
@@ -58,6 +78,16 @@ ruleTester.run('relative-path-within-slice', rule, {
       filename: 'C:/study/fsd/src/shared/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
       options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\project\\shared\\ui\\ArticleRating\\index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
+      options: [{ alias: '@', projectDir: 'project' }],
+    },
+    {
+      filename: 'C:/study/fsd/project/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/AnotherShared\';',
+      options: [{ alias: '@', projectDir: 'project' }],
     },
   ],
 
@@ -68,11 +98,23 @@ ruleTester.run('relative-path-within-slice', rule, {
       errors: [{ messageId: 'shouldBeRelative' }],
     },
     {
+      filename: 'C:\\study\\fsd\\project\\features\\articleRating\\index.ts',
+      code: 'import { ArticleRating } from \'features/articleRating/ui/ArticleRating/ArticleRating\';',
+      options: [{ projectDir: 'project' }],
+      errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
       filename: 'C:/study/fsd/src/features/articleRating/index.ts',
       code: 'import { ArticleRating } from \'features/articleRating/ui/ArticleRating/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
     },
     {
+      filename: 'C:/study/fsd/project/features/articleRating/index.ts',
+      code: 'import { ArticleRating } from \'features/articleRating/ui/ArticleRating/ArticleRating\';',
+      options: [{ projectDir: 'project' }],
+      errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
       filename: 'C:\\study\\fsd\\src\\features\\articleRating\\index.ts',
       code: 'export { ArticleRating } from \'features/articleRating/ui/ArticleRating/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
@@ -93,6 +135,12 @@ ruleTester.run('relative-path-within-slice', rule, {
       code: 'export { ArticleRating } from \'@/features/articleRating/ui/ArticleRating/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
       options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:/study/fsd/project/features/articleRating/index.ts',
+      code: 'export { ArticleRating } from \'@/features/articleRating/ui/ArticleRating/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [{ alias: '@', projectDir: 'project' }],
     },
     {
       filename: 'C:\\study\\fsd\\src\\shared\\ui\\ArticleRating\\index.ts',
@@ -108,6 +156,12 @@ ruleTester.run('relative-path-within-slice', rule, {
       filename: 'C:/study/fsd/src/app/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'app/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
+    },
+    {
+      filename: 'C:/study/fsd/project/app/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'app/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [{ projectDir: 'project' }],
     },
     {
       filename: 'C:\\study\\fsd\\src\\app\\ui\\ArticleRating\\index.ts',
@@ -127,10 +181,22 @@ ruleTester.run('relative-path-within-slice', rule, {
       options: [{ alias: '@' }],
     },
     {
+      filename: 'C:/study/fsd/project/shared/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'@/shared/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [{ alias: '@', projectDir: 'project' }],
+    },
+    {
       filename: 'C:/study/fsd/src/app/ui/ArticleRating/index.ts',
       code: 'import { ArticleRating } from \'@/app/ui/ArticleRating\';',
       errors: [{ messageId: 'shouldBeRelative' }],
       options: [{ alias: '@' }],
+    },
+    {
+      filename: 'C:/study/fsd/project/app/ui/ArticleRating/index.ts',
+      code: 'import { ArticleRating } from \'@/app/ui/ArticleRating\';',
+      errors: [{ messageId: 'shouldBeRelative' }],
+      options: [{ alias: '@', projectDir: 'project' }],
     },
     {
       filename: 'C:\\study\\fsd\\src\\app\\ui\\ArticleRating\\index.ts',

@@ -165,8 +165,20 @@ ruleTester.run('layers-hierarchy', rule, {
       errors: [{ messageId: 'underLayerImportForbidden' }],
     },
     {
+      filename: 'C:\\study\\fsd\\project\\shared\\ui\\Component\\file.tsx',
+      code: "import { Entity } from 'entities/Entity';",
+      options: [{ projectDir: 'project' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
       filename: 'C:\\study\\fsd\\src\\entities\\Entity\\file.tsx',
       code: "import { Feature } from 'features/Feature';",
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\project\\entities\\Entity\\file.tsx',
+      code: "import { Feature } from 'features/Feature';",
+      options: [{ projectDir: 'project' }],
       errors: [{ messageId: 'underLayerImportForbidden' }],
     },
     {
@@ -194,6 +206,18 @@ ruleTester.run('layers-hierarchy', rule, {
       filename: 'C:\\study\\fsd\\src\\entities\\Entity\\file.tsx',
       code: "import { Feature } from '@/features/Feature';",
       options: [{ alias: '@' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\project\\shared\\ui\\Component\\file.tsx',
+      code: "import { Entity } from '@/entities/Entity';",
+      options: [{ alias: '@', projectDir: 'project' }],
+      errors: [{ messageId: 'underLayerImportForbidden' }],
+    },
+    {
+      filename: 'C:\\study\\fsd\\project\\entities\\Entity\\file.tsx',
+      code: "import { Feature } from '@/features/Feature';",
+      options: [{ alias: '@', projectDir: 'project' }],
       errors: [{ messageId: 'underLayerImportForbidden' }],
     },
     {
