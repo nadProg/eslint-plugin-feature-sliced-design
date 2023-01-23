@@ -92,6 +92,35 @@ ruleTester.run('public-api-slice-import', rule, {
       code: "import { Article } from '@/entities/Article/testing';",
       options: [{ alias: '@', testFiles: ['**/*.stories.tsx'] }],
     },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from 'entities/Article';",
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from '@/entities/Article';",
+      options: [{ alias: '@' }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from 'src/entities/Article';",
+      options: [{ projectDir: 'src' }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from 'entities/Article/ui/Article.tsx';",
+      options: [{ insideProjectOnly: true }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from '@/entities/Article/ui/Article.tsx';",
+      options: [{ alias: '@', insideProjectOnly: true }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from 'src/entities/Article/ui/Article.tsx';",
+      options: [{ projectDir: 'src', insideProjectOnly: true }],
+    },
   ],
 
   invalid: [
@@ -146,6 +175,23 @@ ruleTester.run('public-api-slice-import', rule, {
       code: "import { ArticleRating } from '@/features/Feature/testing/internal';",
       options: [{ alias: '@', testFiles: ['**/*.test.tsx'] }],
       errors: [{ messageId: 'shouldBeTestingApi' }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from 'entities/Article/ui/Article.tsx';",
+      errors: [{ messageId: 'shouldBePublicApi' }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from '@/entities/Article/ui/Article.tsx';",
+      options: [{ alias: '@' }],
+      errors: [{ messageId: 'shouldBePublicApi' }],
+    },
+    {
+      filename: '/home/runner/work/fsd/fsd/components/List/List.tsx',
+      code: "import { Article } from 'src/entities/Article/ui/Article.tsx';",
+      options: [{ projectDir: 'src' }],
+      errors: [{ messageId: 'shouldBePublicApi' }],
     },
   ],
 });
