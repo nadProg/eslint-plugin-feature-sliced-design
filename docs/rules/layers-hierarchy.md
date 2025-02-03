@@ -1,35 +1,57 @@
-# Import is allowed from more abstract layer only (layers-hierarchy)
+# ESLint Rule: layers-hierarchy
 
-Please describe the origin of the rule here.
+This ESLint rule enforces the correct import hierarchy in projects following the Feature-Sliced Design (FSD) methodology.
 
-## Rule Details
+## Purpose
+The rule ensures that modules from higher layers do not import modules from lower layers, maintaining a clean architecture and separation of concerns.
 
-This rule aims to...
-
-Examples of **incorrect** code for this rule:
-
-```js
-
-// fill me in
-
-```
-
-Examples of **correct** code for this rule:
-
-```js
-
-// fill me in
-
-```
+### Allowed Import Hierarchy
+- `shared` can be imported anywhere.
+- `entities` can use `shared` and `entities`, but not `features`, `widgets`, `pages`, or `app`.
+- `features` can use `shared` and `entities`, but not `widgets`, `pages`, or `app`.
+- `widgets` can use `shared`, `entities`, and `features`, but not `pages` or `app`.
+- `pages` can use `shared`, `entities`, `features`, and `widgets`, but not `app`.
+- `processes` can use `shared`, `entities`, `features`, and `widgets`, but not `processess` or `app`.
+- `app` can use `shared`, `entities`, `features`, `widgets`, `pages` and `processess`.
 
 ### Options
+- `alias`: Allows using a custom alias (e.g., `@/shared/ui/Component`). Default no alias.
+- `projectDir`: Defines the root directory for the project. Default `src`.
+- `ignoredImports`: Skips validation for specific imports.
+- `ignoredFiles`: Skips validation for specific files.
 
-If there are any options, describe them here. Otherwise, delete this section.
+Example configuration with options:
 
-## When Not To Use It
+```json
+{
+  "rules": {
+    "layers-hierarchy/layers-hierarchy": [
+      "error",
+      { 
+        "alias": "@",
+        "ignoredImports": ["**/entities/Entity"],
+        "ignoredFiles": ["**/component/*.tsx"],
+        "projectDir": "frontend"
+      }
+    ]
+  }
+}
+```
 
-Give a short description of when it would be appropriate to turn off this rule.
+## Examples
 
-## Further Reading
+### ✅ Valid imports
+```ts
+// file: src/features/Feature/file.tsx
+import { Entity } from 'entities/Entity'; // Allowed
+import { SharedComponent } from 'shared/ui/Component'; // Allowed
+```
 
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+### ❌ Invalid imports
+```ts
+// file: src/shared/ui/Component/file.tsx
+import { Entity } from 'entities/Entity'; // ❌ Not allowed
+```
+
+This rule ensures strict adherence to the defined layer hierarchy, preventing architecture violations in large-scale applications.
+

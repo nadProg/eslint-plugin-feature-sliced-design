@@ -18,13 +18,16 @@ Add `feature-sliced-design` to the plugins section of your ESLint configuration:
   "rules": {
     "feature-sliced-design/relative-path-within-slice": [
       "error",
-      { "alias": "@", "projectDir": "frontend" }
+      { 
+        "alias": "@",
+        "projectDir": "src"
+      }
     ],
     "feature-sliced-design/public-api-slice-import": [
       "error",
       {
         "alias": "@",
-        "projectDir": "frontend",
+        "projectDir": "src",
         "ignoreLayers": ["shared", "app"],
         "insideProjectOnly": false
       }
@@ -33,7 +36,7 @@ Add `feature-sliced-design` to the plugins section of your ESLint configuration:
       "error",
       {
         "alias": "@",
-        "projectDir": "frontend"
+        "projectDir": "src"
       }
     ]
   }
@@ -45,9 +48,7 @@ Add `feature-sliced-design` to the plugins section of your ESLint configuration:
 ### `feature-sliced-design/relative-path-within-slice`
 Ensures that all imports within a slice use relative paths instead of absolute aliases.
 
-<!--
-* [relative-path-within-slice](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/relative-path-within-slice.md): Check whether import path within a slice is relative.
--->
+[More detailed description](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/relative-path-within-slice.md)
 
 ### `feature-sliced-design/public-api-slice-import`
 Enforces that slices can only be imported via their public API.
@@ -56,7 +57,7 @@ Enforces that slices can only be imported via their public API.
 * [public-api-slice-import](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/public-api-slice-import.md): Check whether import is performed via public API.
 -->
 
-### `feature-sliced-design/layers-hierarchy`
+### `feature-sliced-design/`
 Enforces the correct import hierarchy based on Feature-Sliced Design principles.
 
 ## Configuration Options
