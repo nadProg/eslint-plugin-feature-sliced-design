@@ -1,35 +1,58 @@
-# Import from a slice should be performed via public API only. Import from slice internals is forbidden. (public-api-slice-import)
+# ESLint Rule: public-api-slice-import
 
-Please describe the origin of the rule here.
+This ESLint rule enforces the correct import structure within a Feature-Sliced Design (FSD) architecture. It ensures that only Public API imports are used, preventing direct imports from internal module directories.
 
-## Rule Details
+## Purpose
 
-This rule aims to...
+This rule helps maintain a clean and structured import hierarchy in projects using Feature-Sliced Design. It prevents breaking encapsulation by ensuring that only public APIs are used in imports, improving code maintainability and scalability.
 
-Examples of **incorrect** code for this rule:
+### Supported Public API
+- `entities`
+- `features`
+- `widgets`
+- `pages`
+- `processes`
+
+`shared` and `app` layers Public API control may not work correctly. It's recommended to add them into `ignoreLayers`.
+In the future versions Public API in `shared` and `layers` will not be checked. 
+
+## Options
+
+- `alias`: Allows using a custom alias (e.g., `@/shared/ui/Component`). Default no alias.
+- `projectDir`: Defines the root directory for the project. Default `src`.
+- `ignoreLayers`: Layers that should be ignored in rule enforcement. Default [].
+- `insideProjectOnly`: If `true`, it's allowed to import from non-public API in files outside project directory. Default `false`.
+
+Example configuration with options:
 
 ```js
-
-// fill me in
-
+module.exports = {
+  rules: {
+    'public-api-slice-import': ['error', {
+      alias: '@',
+      projectDir: 'src',
+      ignoreLayers: ['shared', 'app'],
+      insideProjectOnly: true,
+    }],
+  },
+};
 ```
 
-Examples of **correct** code for this rule:
+### ✅ Valid Examples
 
-```js
+```ts
+// Allowed import from public API
+import { ArticleRating } from 'features/ArticleRating';
 
-// fill me in
-
+// Allowed import using alias
+import { ArticleRating } from '@/features/ArticleRating';
 ```
 
-### Options
+### ❌ Invalid Examples
 
-If there are any options, describe them here. Otherwise, delete this section.
-
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+```ts
+// Disallowed import from internal module directory
+import { ArticleRating } from 'features/Feature/ui'; // ❌ should use public API
+import { ArticleRating } from '@/features/Feature/ui'; // ❌ should use public API
+import { ArticleRating } from '@/features/Feature/ui/View'; // ❌ should use public API
+```

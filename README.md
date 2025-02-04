@@ -53,12 +53,12 @@ Ensures that all imports within a slice use relative paths instead of absolute a
 ### `feature-sliced-design/public-api-slice-import`
 Enforces that slices can only be imported via their public API.
 
-<!--
-* [public-api-slice-import](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/public-api-slice-import.md): Check whether import is performed via public API.
--->
+[More detailed description](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/public-api-slice-import.md)
 
-### `feature-sliced-design/`
+### `feature-sliced-design/layers-hierarchy`
 Enforces the correct import hierarchy based on Feature-Sliced Design principles.
+
+[More detailed description](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/layers-hierarchy.md)
 
 ## Configuration Options
 - **alias**: The alias used for imports (e.g., `@`). No alias by default.
