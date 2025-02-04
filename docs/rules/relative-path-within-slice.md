@@ -1,35 +1,54 @@
-# Check whether import path within a slice is relative (relative-path-within-slice)
+# feature-sliced-design/relative-path-within-slice
 
-Please describe the origin of the rule here.
+This ESLint rule enforces the use of relative paths within feature slices, preventing absolute or aliased imports inside the same slice.
 
-## Rule Details
+## Purpose
 
-This rule aims to...
+This rule ensures that files within the same feature slice use relative imports instead of absolute or aliased paths.
 
-Examples of **incorrect** code for this rule:
+## Options
 
-```js
+- `alias`: Allows using a custom alias (e.g., `@/shared/ui/Component`). Default no alias.
+- `projectDir`: Defines the root directory for the project. Default `src`.
 
-// fill me in
-
-```
-
-Examples of **correct** code for this rule:
+Example configuration with options:
 
 ```js
-
-// fill me in
-
+module.exports = {
+  rules: {
+      "feature-sliced-design/relative-path-within-slice": [
+          "error",
+          {
+              "alias": "@",
+              "projectDir": "src"
+          }
+      ]
+  },
+};
 ```
 
-### Options
+### ✅ Valid Examples
 
-If there are any options, describe them here. Otherwise, delete this section.
+```js
+// file: src/features/ArticleRating/file.tsx
+import { ArticleRating } from './ui/ArticleRating/ui.tsx';
+```
 
-## When Not To Use It
+```js
+// file: src/features/ArticleRating/file.tsx
+import { Article } from '@/entities/Article';
+```
 
-Give a short description of when it would be appropriate to turn off this rule.
+### ❌ Invalid Examples
 
-## Further Reading
+```js
+// file: src/features/ArticleRating/file.tsx
+import { Component } from 'src/features/ArticleRating/ui/component.tsx';
+```
 
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+```js
+// file: src/features/ArticleRating/file.tsx
+import { Component } from '@/features/ArticleRating/ui/component.tsx';
+```
+
+This ensures that developers follow the relative import convention within feature slices.

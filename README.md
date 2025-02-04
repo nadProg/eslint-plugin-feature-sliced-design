@@ -16,9 +16,9 @@ Add `feature-sliced-design` to the plugins section of your ESLint configuration:
 {
   "plugins": ["feature-sliced-design"],
   "rules": {
-    "feature-sliced-design/relative-path-within-slice": [
+    "feature-sliced-design/layers-hierarchy": [
       "error",
-      { 
+      {
         "alias": "@",
         "projectDir": "src"
       }
@@ -32,9 +32,9 @@ Add `feature-sliced-design` to the plugins section of your ESLint configuration:
         "insideProjectOnly": false
       }
     ],
-    "feature-sliced-design/layers-hierarchy": [
+    "feature-sliced-design/relative-path-within-slice": [
       "error",
-      {
+      { 
         "alias": "@",
         "projectDir": "src"
       }
@@ -45,6 +45,11 @@ Add `feature-sliced-design` to the plugins section of your ESLint configuration:
 
 ## Rules
 
+### `feature-sliced-design/layers-hierarchy`
+Enforces the correct import hierarchy based on Feature-Sliced Design principles.
+
+[More detailed description](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/layers-hierarchy.md)
+
 ### `feature-sliced-design/relative-path-within-slice`
 Ensures that all imports within a slice use relative paths instead of absolute aliases.
 
@@ -54,11 +59,6 @@ Ensures that all imports within a slice use relative paths instead of absolute a
 Enforces that slices can only be imported via their public API.
 
 [More detailed description](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/public-api-slice-import.md)
-
-### `feature-sliced-design/layers-hierarchy`
-Enforces the correct import hierarchy based on Feature-Sliced Design principles.
-
-[More detailed description](https://github.com/nadProg/eslint-plugin-feature-sliced-design/blob/main/docs/rules/layers-hierarchy.md)
 
 ## Configuration Options
 - **alias**: The alias used for imports (e.g., `@`). No alias by default.

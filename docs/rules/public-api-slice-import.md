@@ -1,4 +1,4 @@
-# ESLint Rule: public-api-slice-import
+# feature-sliced-design/public-api-slice-import
 
 This ESLint rule enforces the correct import structure within a Feature-Sliced Design (FSD) architecture. It ensures that only Public API imports are used, preventing direct imports from internal module directories.
 
@@ -28,10 +28,10 @@ Example configuration with options:
 ```js
 module.exports = {
   rules: {
-    'public-api-slice-import': ['error', {
-      alias: '@',
-      projectDir: 'src',
-      ignoreLayers: ['shared', 'app'],
+    "feature-sliced-design/public-api-slice-import": ["error", {
+      alias: "@",
+      projectDir: "src",
+      ignoreLayers: ["shared", "app"],
       insideProjectOnly: true,
     }],
   },
@@ -52,7 +52,7 @@ import { ArticleRating } from '@/features/ArticleRating';
 
 ```ts
 // Disallowed import from internal module directory
-import { ArticleRating } from 'features/Feature/ui'; // ❌ should use public API
-import { ArticleRating } from '@/features/Feature/ui'; // ❌ should use public API
-import { ArticleRating } from '@/features/Feature/ui/View'; // ❌ should use public API
+import { ArticleRating } from 'features/Feature/ui';
+import { ArticleRating } from '@/features/Feature/ui';
+import { ArticleRating } from '@/features/Feature/ui/View';
 ```

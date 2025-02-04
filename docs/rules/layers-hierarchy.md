@@ -1,4 +1,4 @@
-# ESLint Rule: layers-hierarchy
+# feature-sliced-design/layers-hierarchy
 
 This ESLint rule enforces the correct import hierarchy in projects following the Feature-Sliced Design (FSD) methodology.
 
@@ -25,7 +25,7 @@ Example configuration with options:
 ```json
 {
   "rules": {
-    "layers-hierarchy/layers-hierarchy": [
+    "feature-sliced-design/layers-hierarchy": [
       "error",
       { 
         "alias": "@",
@@ -43,14 +43,21 @@ Example configuration with options:
 ### ✅ Valid imports
 ```ts
 // file: src/features/Feature/file.tsx
-import { Entity } from 'entities/Entity'; // Allowed
-import { SharedComponent } from 'shared/ui/Component'; // Allowed
+import { Entity } from 'entities/Entity';
+import { SharedComponent } from 'shared/ui/Component';
+
+// file: src/features/Feature/file.tsx
+import { Entity } from '@/entities/Entity';
+import { SharedComponent } from '@/shared/ui/Component';
 ```
 
 ### ❌ Invalid imports
 ```ts
 // file: src/shared/ui/Component/file.tsx
-import { Entity } from 'entities/Entity'; // ❌ Not allowed
+import { Entity } from 'entities/Entity';
+
+// file: src/shared/ui/Component/file.tsx
+import { Entity } from '@/entities/Entity';
 ```
 
 This rule ensures strict adherence to the defined layer hierarchy, preventing architecture violations in large-scale applications.
